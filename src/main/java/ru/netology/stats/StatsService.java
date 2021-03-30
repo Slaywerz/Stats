@@ -21,6 +21,13 @@ public class StatsService {
                 max = month;
             }
         }
+        int min = months[0];
+        for ( int month : months ) {
+            if (month < min) {
+                min = month;
+            }
+        }
+
         int monthNumber = 0;
         int monthMax = 0;
         for ( int month : months ) {
@@ -55,8 +62,11 @@ public class StatsService {
 
     public int monthsBelowAvg(int[] months) {
         int belowAvg = 0;
+
+        int avg = avg(months);
+
         for ( int month : months ) {
-            if (month < avg(months)) {
+            if (month < avg) {
                 belowAvg++;
             }
         }
@@ -65,11 +75,14 @@ public class StatsService {
 
     public int monthsAboveAvg(int[] months) {
         int aboveAvg = 0;
+
+        int avg = avg(months);
         for ( int month : months ) {
-            if (month > avg(months)) {
+            if (month > avg) {
                 aboveAvg++;
             }
         }
         return aboveAvg;
     }
 }
+
